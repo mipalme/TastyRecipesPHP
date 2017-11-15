@@ -2,6 +2,7 @@
 <?php
 include_once "includes/header.php";
 session_start();
+$_SESSION['recipe'] = 'meatballs_recipe';
 ?>
 <html>
     <head>         
@@ -26,7 +27,7 @@ session_start();
         </p> 
         <p> <a href ="pancakes_recipe.php"> Check out our pancakes recipe! </a> <br/> <br/>
             <?php
-            include_once "includes/comments.php";
+            include_once "includes/comments.php";         
             ?>
     </body>
 </html>

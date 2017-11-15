@@ -13,6 +13,7 @@
     <body>
         <?php  if (isset($_SESSION['u_id'])) { ?>   
          <p class ="loginOrRegister"> <a href ="includes/logout.php"> Log out </a> </p>
+         <p class ="loginOrRegister"> Welcome <?php echo $_SESSION['u_uname'] ?> </p>
         <?php } elseif (!isset($_SESSION['u_id'])) { ?>
          <p class ="loginOrRegister"> <a href ="login.php"> Log in </a> </p>
          <p class ="loginOrRegister"> <a href ="registration.php"> Register here </a> </p>

@@ -1,28 +1,40 @@
-<p class ="heavytext"> Comments </p>
-<p class="breadtext"> Glen: Mycket äckliga köttbullar! <br/> </p>
-<p class="breadtext"> Alice: värsta jag någonsin ätit <br/> </p>
-<p class="breadtext"> Viktor: Usch! 0/10 <br/> </p>
+<p class = "heavytext" >Comments</p>
 
-<h1 class = "heavytext" >Comments</h1>
 <?php
-$result = mysql_query("SELECT * FROM comments WHERE postid=0");
-//0 should be the current post's id
-while($row = mysql_fetch_object($result))
-{
-?>
-<div class="comment">
-By: <?php echo $row->author; //Or similar in your table ?>
-<p>
-<?php echo $row->body; ?>
-</p>
-</div>
-<?php
+include "dbh.php";
+$recipe = $_SESSION['recipe'];
+?><input type="hidden" name="recipe" value=<?php echo $recipe ?> /><?php
+
+ //Loop through all the comments and post them in the order of their ID.       
+$sql = "SELECT comment_postID, comment_author, comment_content FROM comment WHERE comment_recipe = '$recipe'";
+$result = mysqli_query($conn, $sql);
+if ($result->num_rows > 0) {
+    // output data of each row
+    while ($row = $result->fetch_assoc()) {
+        ?> <p class="breadtext">
+            <?php echo $row["comment_author"] . ": " . $row["comment_content"]; ?>
+        <form method="post" action="includes/handleComment.php">
+            <button type="submit" name="delete" value=<?php echo $row["comment_postID"] ?>>
+                Delete comment
+            </button>
+        </form>
+        </p>
+        <?php
+    }
+} else {
+    echo "There are no comments for this recipe yet";
 }
-?>
-<h1>Leave a comment:</h1>
-<form action="insertcomment.php" method="post">
-<!-- Here the shit they must fill out -->
-<input type="hidden" name="postid" value="<?php //your posts id ?>" />
-<input type="submit" />
-</form>
-    
+
+//Submitting comments
+if (isset($_SESSION['u_id'])) {
+    ?>
+    <h2>Leave a comment:</h2>
+    <form method="post" action="includes/handleComment.php">  
+        <textarea name="comment" placeholder="Your comment" required></textarea>      
+        <input type="submit" name="submit" />
+    </form>
+<?php } else { ?>
+    <h2>Log in to leave a comment</h2>
+<?php } ?>
+
+

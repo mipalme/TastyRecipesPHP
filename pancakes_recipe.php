@@ -2,14 +2,14 @@
 <?php
 include_once "includes/header.php";
 session_start();
+$_SESSION['recipe'] = 'pancakes_recipe';
 ?>
 <html>
     <head>         
         <title>pancakes_recipe</title>    
     </head>
     <body>          
-        <p class="heavytext">           
-            <a href ="calendar.php"> To the calendar! </a> <br/> <br/>
+        <p class="heavytext"> <a href ="calendar.php"> To the calendar! </a> <br/> <br/>
             Pancakes (of the Swedish variety)! <br/>
             <img class = "image" src ="images/pancakes.jpg"
                  alt = "Picture of cool pancakes"/> <br/>         
