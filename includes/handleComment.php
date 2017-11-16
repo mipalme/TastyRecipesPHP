@@ -2,17 +2,15 @@
 session_start();
 include 'dbh.php';
 
-$recipe = $_SESSION['recipe']; //grrrr
+$recipe = 'meatballs_recipe'; //grrrr
 $author = $_SESSION['u_uname'];
 
-echo $recipe;
-var_dump($recipe);
-exit();
+
 
 //If submit button is clicked
 if (isset($_POST['submit'])) {   
     //Post comment
-    $comment = $_POST['comment'];      
+    $comment = mysqli_real_escape_string($conn,$_POST['comment']);
     $sql = "INSERT INTO comment (comment_author, comment_recipe, comment_content)"
             . " VALUES ('$author','$recipe','$comment')";
     $result = mysqli_query($conn, $sql);

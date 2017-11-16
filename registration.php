@@ -15,7 +15,25 @@ session_start();
     <body>
         <h1 class="logo"> Tasty Recipes! </h1>
         <h2 class="home"> <a href ="index.php"> Home </a> </h2>
-        <p class="heavytext"> Register below </p>
+        <p class="heavytext"> Register below </p><
+        
+        <?php
+        if ($_GET['registration'] == 'success') {
+            ?>
+            <div class="notification">
+                <span class="closebtn" onclick="this.parentElement.style.display = 'none';">&times;</span> 
+                Registration successful!
+            </div>
+            <?php }
+            
+            
+            if ($_GET['registration'] == 'invalid') { ?>
+            <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display = 'none';">&times;</span> 
+                Invalid username or password
+            </div>
+        <?php } ?>
+           
         <div class="container">
             <form action="includes/signup.php" method="POST">
                 <label><b>Username</b></label>
@@ -24,7 +42,7 @@ session_start();
                 <label><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="pwd" required>
                      
-                <button type="submit" name="submit">Register!</button>   
+                <button class="logOrReg" type="submit" name="submit">Register!</button>   
             </form>
         </div>
         

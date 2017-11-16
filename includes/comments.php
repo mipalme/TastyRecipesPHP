@@ -1,9 +1,25 @@
 <p class = "heavytext" >Comments</p>
+<?php
+        if ($_GET['comment'] == 'deleted') {
+            ?>
+            <div class="notification">
+                <span class="closebtn" onclick="this.parentElement.style.display = 'none';">&times;</span> 
+                Comment deleted!
+            </div>
+        <?php } 
+
+        if ($_GET['comment'] == 'noAuthority') {
+            ?>
+            <div class="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display = 'none';">&times;</span> 
+                You can't delete that comment
+            </div>
+        <?php } ?>
 
 <?php
 include "dbh.php";
 $recipe = $_SESSION['recipe'];
-?><input type="hidden" name="recipe" value=<?php echo $recipe ?> /><?php
+?><input type="hidden" name="recipe" value="<?php echo $recipe ?> "/><?php
 //Loop through all the comments and post them in the order of their ID.       
 $sql = "SELECT comment_postID, comment_author, comment_content FROM comment WHERE comment_recipe = '$recipe'";
 $result = mysqli_query($conn, $sql);
@@ -13,9 +29,7 @@ if ($result->num_rows > 0) {
         ?>        
         <form method="post" action="includes/handleComment.php">
             <p class="breadtext">
-                <?php echo $row["comment_author"] . ": " . $row["comment_content"]; ?>
-                
-                
+                <?php echo $row["comment_author"] . ": " . $row["comment_content"]; ?>                              
                 <button type="submit" class="commentButton" name="delete" value=<?php echo $row["comment_postID"] ?>>
                     Delete comment
                 </button>

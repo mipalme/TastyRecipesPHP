@@ -162,6 +162,41 @@ body {font-family: Verdana, sans-serif;}
     background: #A9A9A9;
     color: white !important
 }
+
+/* The alert message box */
+.alert {
+    padding: 20px;
+    background-color: #f44336; /* Red */
+    color: white;
+    margin-bottom: 15px;
+    opacity: 0.8;
+    text-align: center;
+}
+.notification {
+    padding: 20px;
+    background-color: green; 
+    color: white;
+    margin-bottom: 15px;
+    opacity: 0.8;
+    text-align: center;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
 /* Add media queries for smaller screens */
 @media screen and (max-width: 1024px) {
     .weekdays li, .days li {width: 13.3%;}        

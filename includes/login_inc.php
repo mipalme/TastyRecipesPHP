@@ -6,8 +6,9 @@
         include 'dbh.php';
         
         
-        $uname = filter_input(INPUT_POST,'uname');
-        $pwd = filter_input(INPUT_POST,'pwd');
+        $uname = mysqli_real_escape_string($conn,filter_input(INPUT_POST,'uname'));
+        $pwd = mysqli_real_escape_string($conn,filter_input(INPUT_POST,'pwd'));
+       
              
            
             $sql = "SELECT * FROM users WHERE user_uname='$uname'";
