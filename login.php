@@ -6,7 +6,7 @@
     <head>    
         <link rel="stylesheet" href="CSS/browserreset.css">
         <link rel="stylesheet" href="CSS/CSS.css">
-        <link rel="stylesheet" href="CSS/enteraccountinfo.css">
+        <link rel="stylesheet" href="CSS/enterInfo.css">
         <link href='https://fonts.googleapis.com/css?family=Akronim' rel='stylesheet'>
         <title>login</title>
         <meta charset="UTF-8">
@@ -30,7 +30,7 @@
            
       
 
-        <button type="submit" name="submit">Login!</button>  
+        <button class ="logOrReg" type="submit" name="submit">Login!</button>  
             </form>
         </div>
         

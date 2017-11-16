@@ -2,8 +2,12 @@
 session_start();
 include 'dbh.php';
 
-$recipe = 'meatballs_recipe'; //grrrr
+$recipe = $_SESSION['recipe']; //grrrr
 $author = $_SESSION['u_uname'];
+
+echo $recipe;
+var_dump($recipe);
+exit();
 
 //If submit button is clicked
 if (isset($_POST['submit'])) {   

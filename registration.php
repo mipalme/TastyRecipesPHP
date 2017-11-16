@@ -6,7 +6,7 @@ session_start();
     <head>    
         <link rel="stylesheet" href="CSS/browserreset.css">
         <link rel="stylesheet" href="CSS/CSS.css">
-        <link rel="stylesheet" href="CSS/enteraccountinfo.css">
+        <link rel="stylesheet" href="CSS/enterInfo.css">
         <link href='https://fonts.googleapis.com/css?family=Akronim' rel='stylesheet'>
         <title>registration</title>
         <meta charset="UTF-8">
