@@ -19,7 +19,6 @@
 <?php
 include "dbh.php";
 $recipe = $_SESSION['recipe'];
-?><input type="hidden" name="recipe" value="<?php echo $recipe ?> "/><?php
 //Loop through all the comments and post them in the order of their ID.       
 $sql = "SELECT comment_postID, comment_author, comment_content FROM comment WHERE comment_recipe = '$recipe'";
 $result = mysqli_query($conn, $sql);

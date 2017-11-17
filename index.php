@@ -1,8 +1,7 @@
-<!DOCTYPE html>
 <?php
 include_once "includes/header.php";
-session_start();
 ?>
+<!DOCTYPE html>
 <html>
     <head>         
         <title>index</title>    

@@ -27,7 +27,7 @@
                     elseif ($row['user_pwd'] == $pwd){                     
                         //Log in the user
                         $_SESSION['u_id'] = $row['user_id'];
-                        $_SESSION['u_uname'] = $row['user_uname'];
+                        $_SESSION['u_uname'] = $row['user_uname'];                      
                         header("Location: ../index.php?login=success");                      
                         exit();
                     }

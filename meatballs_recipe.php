@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 <?php
 include_once "includes/header.php";
-session_start();
 $_SESSION['recipe'] = 'meatballs_recipe';
 ?>
+<!DOCTYPE html>
 <html>
     <head>         
         <title>meatballs_recipe</title>    
