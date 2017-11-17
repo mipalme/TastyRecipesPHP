@@ -79,6 +79,12 @@ p.breadtext {
     font-size: 1em;
     background-color: white;
 }
+ul.breadtext {
+    font-family: Verdana;
+    font-size: 1em;
+    background-color: white;
+    list-style-type: none;
+}
 ul.list {
     font-family: 'Verdana';
     font-size: 1em;

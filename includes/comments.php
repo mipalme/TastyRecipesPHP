@@ -28,10 +28,12 @@ if ($result->num_rows > 0) {
         ?>        
         <form method="post" action="includes/handleComment.php">
             <p class="breadtext">
-                <?php echo $row["comment_author"] . ": " . $row["comment_content"]; ?>                              
-                <button type="submit" class="commentButton" name="delete" value=<?php echo $row["comment_postID"] ?>>
+                <?php echo $row["comment_author"] . ": " . $row["comment_content"]; ?>
+                <?php if($_SESSION['u_uname'] == $row["comment_author"]){ ?>
+                <button type="submit" class="deleteButton" name="delete" value=<?php echo $row["comment_postID"] ?>>
                     Delete comment
                 </button>
+                <?php } ?>
             </p>
         </form>   
         <?php
@@ -45,8 +47,8 @@ if (isset($_SESSION['u_id'])) {
     ?>
     <h2>Leave a comment:</h2>
     <form method="post" action="includes/handleComment.php">  
-        <textarea name="comment" placeholder="Your comment" required></textarea>      
-        <button type="submit" class="commentButton" name="submit">Submit</button>
+        <textarea name="comment" placeholder="Your comment" maxLength="256" required></textarea>      
+        <button type="submit" class="submitButton" name="submit">Submit</button>
     </form>
 <?php } else { ?>
     <h2>Log in to leave a comment</h2>

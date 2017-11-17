@@ -1,6 +1,9 @@
 <?php
 include_once "includes/header.php";
+include_once "XML/simpleXML.php";
 $_SESSION['recipe'] = 'meatballs_recipe';
+$cookbook = $xmlstr;
+$recipeNumber = 0;
 ?>
 <!DOCTYPE html>
 <html>
@@ -9,24 +12,26 @@ $_SESSION['recipe'] = 'meatballs_recipe';
     </head>
     <body>        
         <p class="heavytext"> <a href ="calendar.php"> To the calendar! </a> <br/> <br/>
-            Meatballs (of the Swedish variety)! <br/>
-            <img class= "image" src ="images/meatballs.jpg"
-                 alt = "Picture of cool meatballs"/> <br/>         
+            <?php echo $cookbook->recipe[$recipeNumber]->title; ?> <br/>
+            <img class= "image" src ="<?php echo $cookbook->recipe[$recipeNumber]->imagepath; ?>"
+                 alt = "<?php echo $cookbook->recipe[$recipeNumber]->title; ?>"/> <br/>         
         </p>
-        <h2 class="title"> The recipe (1 portion): </h2>
+        <h2 class="title"> The recipe (<?php echo $cookbook->recipe[$recipeNumber]->quantity; ?>): </h2>
         <ul class="list">
-            <li>7 meatballs</li>
-            <li>Some pasta or rice or potatoes (optional!)</li>
-            <li>Ketchup or gravy or jam (depending on preference)</li>
+            <?php foreach ($cookbook->recipe[$recipeNumber]->ingredient->li as $li) {
+                echo "<li>$li</li>";            
+            }
+            ?>
         </ul>
-        <p class="breadtext">
-            Take the meatballs out of the packaging. Now, cook them on medium to high heat for ten minutes. <br/>
-            Cook some side dish if you want (but no vegetables!!!). <br/>
-            Serve with ketchup or gravy or jam, and enjoy.
-        </p> 
+        <ul class="breadtext">
+            <?php foreach ($cookbook->recipe[$recipeNumber]->description->li as $li) {
+                echo "<li>$li</li>";            
+            }
+            ?>
+        </ul> 
         <p> <a href ="pancakes_recipe.php"> Check out our pancakes recipe! </a> <br/> <br/>
             <?php
-            include_once "includes/comments.php";         
+            include_once "includes/comments.php";
             ?>
     </body>
 </html>
